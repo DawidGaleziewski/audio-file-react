@@ -1,0 +1,14 @@
+.results-table {
+  font-size: 1rem;
+  border: 1px solid #e1e1e1;
+  border-collapse: collapse;
+}
+
+.results-table__cell {
+  padding: 1rem;
+}
+
+.results-table__cell--head {
+  border-bottom: 1px solid black;
+  background: #fff;
+}

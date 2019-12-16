@@ -5,11 +5,12 @@ import SetupStage from './SetupStage/SetupStage';
 // Libraries:
 import Normalize from 'react-normalize';
 
-//Modules
+//Components
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import LandingPage from './LandingPage/LandingPage';
 import QuestionStage from './QuestionStage/QuestionStage';
+import ResultsStage from './ResultsStage/ResultsStage';
 
 const Container = () => {
   return (
@@ -20,6 +21,7 @@ const Container = () => {
         <LandingPage />
         <SetupStage />
         <QuestionStage />
+        <ResultsStage />
       </main>
       <Footer />
     </Fragment>
