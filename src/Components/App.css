@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 body {
-    font-family: 'Lato', sans-serif;
-    background-color: #fafafa;
+  font-family: 'Lato', sans-serif;
+  background-color: #fafafa;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
