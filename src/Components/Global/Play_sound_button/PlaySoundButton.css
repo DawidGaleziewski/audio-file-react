@@ -1,0 +1,21 @@
+.play-sound-button {
+    display: inline-block;
+    font-style: inherit;
+    border: 3px solid #007dcfff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: #007dcfff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color .5s ease-in, background-color .5s ease-out;
+   
+}
+
+.play-sound-button:hover {
+    transition: color .5s ease-in, background-color .5s ease-in;
+    color: #007dcfff;
+    background-color: #fff;
+} 

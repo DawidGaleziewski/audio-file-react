@@ -1,0 +1,16 @@
+.button-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 2rem;
+}
+
+.main-landing-page {
+    width: 80vw;
+    margin: 0 auto;
+    box-shadow: -1px 0px 14px 2px rgba(0,0,0,0.33);
+    border: 1px solid #e1e1e1;
+}
+
+.main-landing-page__picture {
+    width: 100%;
+}

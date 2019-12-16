@@ -1,0 +1,29 @@
+.setup-stage {
+    border-top: 1px solid #e1e1e1;
+    padding: 2rem;
+    text-align: center;
+}
+
+.setup-stage__label {
+    display: inline-block;
+    margin: 1rem;
+}
+
+.setup-stage__number {
+    display: inline-block;
+    font-family: inherit;
+    padding: 0.5rem;
+    width: 5rem;
+    border: 3px solid #007dcfff;
+    color: #007dcfff;
+    border-radius: 5px;
+    transition: background-color .5s ease-in;
+    text-align: center;
+    font-weight: bold;
+}
+
+.setup-stage__number:focus {
+    background-color: #007dcfff;
+    color: #fff;
+    transition: background-color .5s ease-out;
+}

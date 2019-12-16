@@ -1,0 +1,11 @@
+.description {
+    padding: 2rem;
+    background-color: #fafafa;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.description-title {
+    border-bottom: 5px solid #d7dc1ffb;
+    display: inline-block;
+    margin: 0;
+}
