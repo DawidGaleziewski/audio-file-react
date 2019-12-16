@@ -12,7 +12,15 @@ import QuestionStage from './QuestionStage/QuestionStage';
 import ResultsStage from './ResultsStage/ResultsStage';
 import Footer from './Footer/Footer';
 
+// App logic
+import RollQuestions from './rollQuestions';
+const { media: mediaJSON } = require('../assets/media/audiovisual_media.json');
+
 const Container = () => {
+  console.log(mediaJSON);
+  const rollQuestions = new RollQuestions(mediaJSON, 3).rollWinningMedia();
+
+  console.log(rollQuestions);
   return (
     <Router>
       <Normalize />
