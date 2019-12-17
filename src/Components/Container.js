@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 // Libraries:
 import Normalize from 'react-normalize';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import axios from 'axios';
 
 //Components
 import Header from './Header/Header';
@@ -17,9 +18,23 @@ import RollQuestions from './rollQuestions';
 const { media: mediaJSON } = require('../assets/media/audiovisual_media.json');
 
 const Container = () => {
-  const rollQuestions = new RollQuestions(mediaJSON, 3).createQuestionObjects();
+  const [questionsState, setQuestionsState] = useState([]);
+  const [numberOfQuestionsState, setNumberOfQuestionsState] = useState(null);
 
-  console.log(rollQuestions);
+  // Fetch the questions data. If the number of question chagnes, fetch the data again and set the number of questions.
+  useEffect(() => {
+    axios.get('./media/audiovisual_media.json').then(data => {
+      const {
+        data: { media }
+      } = data;
+      const rolledQuestions = new RollQuestions(
+        media,
+        numberOfQuestionsState
+      ).createQuestionObjects();
+      setQuestionsState(rolledQuestions);
+    });
+  }, [numberOfQuestionsState]);
+
   return (
     <Router>
       <Normalize />

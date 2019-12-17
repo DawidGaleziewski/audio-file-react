@@ -8,6 +8,7 @@ class QuestionSet {
       this.correctAnswer,
       this.wrongAnswer1
     ]);
+    this.selectedAnswerID = null;
   }
 
   rollNumber(fromInt, toInt) {
