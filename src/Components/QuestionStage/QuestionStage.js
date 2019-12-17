@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+// Components
 import Section from '../Section/Section';
 import NextStageButton from '../Global/Next_stage_button/NextStageButton';
 import PlaySoundButton from '../Global/Play_sound_button/PlaySoundButton';
@@ -6,15 +8,37 @@ import PlaySoundButton from '../Global/Play_sound_button/PlaySoundButton';
 // Styles
 import './QuestionStage.css';
 
-const QuestionStage = () => {
+//Libraries
+import axios from 'axios';
+
+// App logic
+import RollQuestions from './rollQuestions';
+
+const QuestionStage = ({ match }) => {
+  const { length: testLength, questionNumber } = match.params;
+
+  const [questionsState, setQuestionsState] = useState([]);
+
+  // Fetch the questions data. If the number of question chagnes, fetch the data again and set the number of questions.
+  useEffect(() => {
+    axios.get('/media/audiovisual_media.json').then(data => {
+      const {
+        data: { media }
+      } = data;
+      const rolledQuestions = new RollQuestions(
+        media,
+        testLength
+      ).createQuestionObjects();
+      setQuestionsState(rolledQuestions);
+    });
+  }, [testLength]);
+  console.log(questionsState);
+
   return (
     <Section headerText="Answer the question">
       <div className="button-container">
         <PlaySoundButton />
-        <NextStageButton
-        //   changeAppStageHandler={changeAppStageHandler}
-        //   currentStage={currentStage}
-        />
+        <NextStageButton linkToUrl="/" />
       </div>
       <p>
         Play the sound, after that select which one from below is correct source

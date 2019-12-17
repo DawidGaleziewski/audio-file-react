@@ -1,26 +1,15 @@
 import React from 'react';
 import './NextStageButton.css';
 
- const NextStageButton = ({changeAppStageHandler, currentStage}) => {
-     
-    const currentStageText = ()=> {
-        if(currentStage === 0) {
-            return 'Start'
-        } else {
-            return 'Next'
-        }
-    }
+// Libraries
+import { Link } from 'react-router-dom';
 
-    return (
-        <button 
-        className="next-stage-button"
-        onClick={changeAppStageHandler}
-        >
-            {currentStageText()}
-        </button>
-    )
-}
+const NextStageButton = ({ buttonText = 'Next', linkToUrl }) => {
+  return (
+    <Link to={linkToUrl} className="next-stage-button">
+      {buttonText}
+    </Link>
+  );
+};
 
-export default NextStageButton
-
-//
+export default NextStageButton;
