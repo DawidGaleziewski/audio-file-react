@@ -17,8 +17,7 @@ import RollQuestions from './rollQuestions';
 const { media: mediaJSON } = require('../assets/media/audiovisual_media.json');
 
 const Container = () => {
-  console.log(mediaJSON);
-  const rollQuestions = new RollQuestions(mediaJSON, 3).rollWinningMedia();
+  const rollQuestions = new RollQuestions(mediaJSON, 3).createQuestionObjects();
 
   console.log(rollQuestions);
   return (
