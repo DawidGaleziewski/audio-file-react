@@ -56,7 +56,6 @@ class RollQuestions {
   createQuestionObjects() {
     const winningMedia = [...this.winningMedia];
     const questionObjects = winningMedia.map(media => {
-      console.log('passed media', media);
       const questionSet = new QuestionSet(media[0], [...this.mediaJSON]);
       return questionSet;
     });
