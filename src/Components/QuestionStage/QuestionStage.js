@@ -35,13 +35,18 @@ const QuestionStage = ({ match }) => {
   }, [testLength]);
 
   if (questionsState[questionNumber]) {
+    console.log(questionsState);
     console.log(questionsState[questionNumber]);
   }
 
   return (
     <Section headerText="Answer the question">
       <div className="button-container">
-        <PlaySoundButton />
+        {questionsState[questionNumber] ? (
+          <PlaySoundButton
+            audioURL={questionsState[questionNumber].correctAnswer.audio}
+          />
+        ) : null}
         <NextStageButton
           linkToUrl={`/question-stage/${testLength}/${parseInt(questionNumber) +
             1}`}

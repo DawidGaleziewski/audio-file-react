@@ -5,6 +5,9 @@ import Section from '../Section/Section';
 import NextStageButton from '../Global/Next_stage_button/NextStageButton';
 import PlaySoundButton from '../Global/Play_sound_button/PlaySoundButton';
 
+// Images
+import imgListen from './listen.svg';
+
 const LandingPage = () => {
   return (
     <Section headerText={'Test you hearing'}>
@@ -18,7 +21,7 @@ const LandingPage = () => {
 
       <img
         className="main-landing-page__picture"
-        src={require('../../assets/listen.svg')}
+        src={imgListen}
         alt="landing page picture"
       />
     </Section>

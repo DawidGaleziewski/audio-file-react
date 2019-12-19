@@ -4,6 +4,9 @@ import './SetupStage.css';
 import NextStageButton from '../Global/Next_stage_button/NextStageButton';
 import PlaySoundButton from '../Global/Play_sound_button/PlaySoundButton';
 
+// Images
+import imgSettings from './settings.svg';
+
 const SetupStage = ({ numberOfTests, changeNumberOfTestsHandler }) => {
   const [testLengthState, setTestLengthState] = useState(5);
   const onChangeHandler = event => {
@@ -32,7 +35,7 @@ const SetupStage = ({ numberOfTests, changeNumberOfTestsHandler }) => {
       </form>
       <img
         className="main-landing-page__picture"
-        src={require('../../assets/settings.svg')}
+        src={imgSettings}
         alt="settings image"
       />
     </Section>
