@@ -20,6 +20,8 @@ const QuestionStage = ({ match }) => {
 
   const [questionsState, setQuestionsState] = useState([]);
 
+  // const initialFormState = {selectedAnswer: ''}
+
   // Fetch the questions data. If the number of question chagnes, fetch the data again and set the number of questions.
   useEffect(() => {
     axios.get('/assets/media/audiovisual_media.json').then(data => {
@@ -38,6 +40,13 @@ const QuestionStage = ({ match }) => {
     console.log(questionsState);
     console.log(questionsState[questionNumber]);
   }
+
+  const formOnChangeHandler = event => {
+    const copiedArray = [...questionsState];
+    copiedArray[questionNumber].selectedAnswerID = event.target.value;
+    console.log('setting state', copiedArray);
+    setQuestionsState(copiedArray);
+  };
 
   return (
     <Section headerText="Answer the question">
@@ -61,16 +70,28 @@ const QuestionStage = ({ match }) => {
         {questionsState[questionNumber] ? (
           <Fragment>
             <PictureAnswer
-              labelID={questionsState[questionNumber].correctAnswer.id}
+              onChangeHandler={formOnChangeHandler}
+              labelID={questionsState[
+                questionNumber
+              ].correctAnswer.id.toString()}
               imageURL={questionsState[questionNumber].correctAnswer.visual}
+              selectedID={questionsState[questionNumber].selectedAnswerID}
             />
             <PictureAnswer
-              labelID={questionsState[questionNumber].wrongAnswer1.id}
+              onChangeHandler={formOnChangeHandler}
+              labelID={questionsState[
+                questionNumber
+              ].wrongAnswer1.id.toString()}
               imageURL={questionsState[questionNumber].wrongAnswer1.visual}
+              selectedID={questionsState[questionNumber].selectedAnswerID}
             />
             <PictureAnswer
-              labelID={questionsState[questionNumber].wrongAnswer2.id}
+              onChangeHandler={formOnChangeHandler}
+              labelID={questionsState[
+                questionNumber
+              ].wrongAnswer2.id.toString()}
               imageURL={questionsState[questionNumber].wrongAnswer2.visual}
+              selectedID={questionsState[questionNumber].selectedAnswerID}
             />
           </Fragment>
         ) : null}
