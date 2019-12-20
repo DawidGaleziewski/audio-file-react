@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Libraries:
 import Normalize from 'react-normalize';
@@ -13,6 +13,8 @@ import ResultsStage from './ResultsStage/ResultsStage';
 import Footer from './Footer/Footer';
 
 const Container = () => {
+  const [questionsState, setQuestionsState] = useState([]);
+
   return (
     <Router>
       <Normalize />
@@ -22,7 +24,13 @@ const Container = () => {
         <Route path="/setup-stage" component={SetupStage} />
         <Route
           path="/question-stage/:length/:questionNumber"
-          component={QuestionStage}
+          render={props => (
+            <QuestionStage
+              {...props}
+              questionsState={questionsState}
+              setQuestionsState={setQuestionsState}
+            />
+          )}
         />
         <Route path="/result-stage" component={ResultsStage} />
       </main>

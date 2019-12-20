@@ -15,10 +15,8 @@ import axios from 'axios';
 // App logic
 import RollQuestions from './rollQuestions';
 
-const QuestionStage = ({ match }) => {
+const QuestionStage = ({ match, setQuestionsState, questionsState }) => {
   const { length: testLength, questionNumber } = match.params;
-
-  const [questionsState, setQuestionsState] = useState([]);
 
   // const initialFormState = {selectedAnswer: ''}
 
@@ -34,7 +32,7 @@ const QuestionStage = ({ match }) => {
       ).createQuestionObjects();
       setQuestionsState(rolledQuestions);
     });
-  }, [testLength]);
+  }, [testLength, setQuestionsState]);
 
   if (questionsState[questionNumber]) {
     console.log(questionsState);
@@ -48,6 +46,13 @@ const QuestionStage = ({ match }) => {
     setQuestionsState(copiedArray);
   };
 
+  const linkToNextQuestion =
+    Number(questionNumber) <= Number(testLength) - 2
+      ? `/question-stage/${testLength}/${parseInt(questionNumber) + 1}`
+      : '/result-stage';
+
+  // console.log('num', testLength);
+
   return (
     <Section headerText="Answer the question">
       <div className="button-container">
@@ -56,10 +61,9 @@ const QuestionStage = ({ match }) => {
             audioURL={questionsState[questionNumber].correctAnswer.audio}
           />
         ) : null}
-        <NextStageButton
-          linkToUrl={`/question-stage/${testLength}/${parseInt(questionNumber) +
-            1}`}
-        />
+        <NextStageButton linkToUrl={linkToNextQuestion} />
+
+        {/* questionNumber === testLength ? linkToNextQuestion : null */}
       </div>
       <p>
         Play the sound, after that select which one from below is correct source
