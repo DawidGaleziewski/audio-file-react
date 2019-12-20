@@ -2,7 +2,7 @@ import React from 'react';
 import Section from '../Section/Section';
 import './ResultsStage.css';
 
-const ResultsStage = () => {
+const ResultsStage = ({ questionsState }) => {
   return (
     <Section headerText="Check your results">
       <p>See which sounds caused you issues</p>
@@ -19,13 +19,23 @@ const ResultsStage = () => {
               Replay sound
             </th>
           </tr>
-          <tr>
-            <td className="results-table__cell">1</td>
-            <td className="results-table__cell">false</td>
-            <td className="results-table__cell">
-              <button>PLAY</button>
-            </td>
-          </tr>
+          {questionsState.map((questionsSet, index) => {
+            const isCorrect =
+              questionsSet.correctAnswer.id.toString() ===
+              questionsSet.selectedAnswerID;
+            console.log('is correct', isCorrect);
+            return (
+              <tr key={questionsSet.correctAnswer.id.toString()}>
+                <td className="results-table__cell">{index}</td>
+                <td className="results-table__cell">
+                  {isCorrect ? 'correct' : 'wrong'}
+                </td>
+                <td className="results-table__cell">
+                  <button>PLAY</button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </Section>

@@ -32,7 +32,12 @@ const Container = () => {
             />
           )}
         />
-        <Route path="/result-stage" component={ResultsStage} />
+        <Route
+          path="/result-stage"
+          render={props => (
+            <ResultsStage {...props} questionsState={questionsState} />
+          )}
+        />
       </main>
       <Footer />
     </Router>
